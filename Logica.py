@@ -9,7 +9,8 @@ class Director():
     def Get_personaje(self,opcion):
         if opcion ==1:
             finn=Finn()
-            finn.Set_imagenes(self._Builder.Get_sprites())    
+            finn.Set_imagenes(self._Builder.Get_sprites())
+            finn.Set_imagedibu(self._Builder.Get_principal())  
         return finn
         
             
@@ -22,6 +23,8 @@ class ConstructorPersonaje():
                self.fabrica.Mover_arriba(), 
                self.fabrica.Mover_abajo()]   
 
+    def Get_principal(self):
+        return self.fabrica.Get_principal()
 
 class Movimiento():
     
@@ -46,9 +49,16 @@ class Finn(Movimiento):
         self.posy=0
         self.imagenes=[]
         self.imageAc=None
+        self.imagedibu=None
         self.contador =0  
         self.fila=0  
     
+    def Set_imagedibu(self,image):
+        self.imagedibu=image
+    
+    def Get_imagedibu(self):
+        return self.imagedibu
+
     def Set_imagenes(self,imagenes):
         self.imagenes=imagenes
 
@@ -64,8 +74,8 @@ class Finn(Movimiento):
    #cdibuja la imagen correspondiente en la actual posicion
     def Dibujar(self,screen):
         self.screen= screen
-        print(str(self.Get_ImageAc())," <- esta es lo que retorna")
-        self.screen.blit(self.Get_ImageAc(),(self.Get_posx(),self.Get_posy()))
+        image= self.Get_imagedibu().subsurface(self.Get_ImageAc())
+        self.screen.blit(image,(self.Get_posx(),self.Get_posy()))
     
     # dibuja una imagen cunado no hay movimiento en la ultima posicion que este se encuentra    
     """

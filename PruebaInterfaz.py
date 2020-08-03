@@ -13,11 +13,12 @@ class Modelo():
         self.director = Director()
         self.ejecuntado=True
         self.director.set_builder(ConstructorPersonaje(FabricaFinn()))
-        self.personaje=self.director.Get_personaje(1)
+        self.personaje = self.director.Get_personaje(1)
         self.Ventana()
 
   # metodo que dibuja el personaje que se selecciona y lo anima 
     def Dibujar(self):
+        self.screen.fill(pygame.Color('gray'))
         self.teclas=pygame.key.get_pressed() 
         if self.teclas[K_RIGHT]:
             self.personaje.Move_Right()
@@ -42,7 +43,8 @@ class Modelo():
                     sys.exit() 
             self.Dibujar()
             pygame.display.update()
-            pygame.time.delay(100)    
+            pygame.time.delay(100) 
+
 
 if __name__ == "__main__":
     Modelo()

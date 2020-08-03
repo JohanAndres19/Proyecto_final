@@ -12,6 +12,9 @@ class FabricaAbstracta:
     def Mover_abajo(self):
         pass 
 
+    def Get_principal(self):
+        pass
+
 class FabricaFinn(FabricaAbstracta):
  
     def Mover_derecha(self):
@@ -26,5 +29,6 @@ class FabricaFinn(FabricaAbstracta):
     def Mover_arriba(self):
         return SpritesUpFinn().Sprites_Up()
 
-    
+    def Get_principal(self):
+        return Principal().Get_image()     
  
