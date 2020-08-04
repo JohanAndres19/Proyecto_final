@@ -78,12 +78,12 @@ class Finn(Movimiento):
         self.screen.blit(image,(self.Get_posx(),self.Get_posy()))
     
     # dibuja una imagen cunado no hay movimiento en la ultima posicion que este se encuentra    
-    """
+    
     def Detener(self, screen):
         self.screen=screen
-        imagen=util().cargar_imagen("Imagenes/11.gif")
-        self.screen.blit(imagen,(self.Get_posx(),140))
-    """    
+        imagen =self.Get_imagedibu().subsurface(self.Get_imagenes()[3][0])
+        self.screen.blit(imagen,(self.Get_posx(),self.Get_posy()))
+
     def Move_Right(self):
         self.posx+=5
         self.fila=0
